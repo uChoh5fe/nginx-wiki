@@ -80,6 +80,13 @@ In the Gallery Admin page set:
             rewrite ^/pages/(.*)/?$ /index.php?p=pages&title=$1 last;
         }
 
+        # Archive
+        location /page/archive {
+            rewrite ^/page/archive/*$ /index.php?p=archive last;
+            rewrite ^/page/archive/(.*)/([0-9]+)/?$ /index.php?p=search&date=$1&page=$2 last;
+            rewrite ^/page/archive/(.*)/?$ /index.php?p=search&date=$1 last;
+        }
+
         # Search
         location /page/search {
             rewrite ^/page/search/fields([0-9]+)/(.*)/([0-9]+)/?$ /index.php?p=search&searchfields=$1&words=$2&page=$3 last;
